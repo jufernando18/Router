@@ -1,14 +1,14 @@
-package co.com.ies.service.dto;
+package co.com.ies.service.dto.operatormodule;
 
 import co.com.ies.service.dto.sub.RoomAndRaffle;
 
 import java.util.List;
 
-public class GetAllRafflesResponse {
+public class GetAllRafflesModuleResponse {
 
   private List<RoomAndRaffle> allRaffles;
 
-  public GetAllRafflesResponse() {
+  public GetAllRafflesModuleResponse() {
     super();
   }
 

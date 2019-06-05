@@ -1,4 +1,4 @@
-package co.com.ies.service.dto;
+package co.com.ies.service.dto.operator;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

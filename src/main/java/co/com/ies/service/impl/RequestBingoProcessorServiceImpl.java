@@ -2,10 +2,10 @@ package co.com.ies.service.impl;
 
 import co.com.ies.domain.service.impl.RequestProcessorDomain;
 import co.com.ies.service.RequestBingoProcessorService;
-import co.com.ies.service.dto.LaunchGameInDto;
-import co.com.ies.service.dto.LaunchGameOutDto;
 import co.com.ies.service.dto.RequestDto;
 import co.com.ies.service.dto.ResponseDto;
+import co.com.ies.service.dto.operator.LaunchGameInDto;
+import co.com.ies.service.dto.operator.LaunchGameOutDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

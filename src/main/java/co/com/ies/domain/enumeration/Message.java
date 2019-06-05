@@ -3,8 +3,8 @@ package co.com.ies.domain.enumeration;
 public enum Message {
   BAD_REQUEST_OPERATOR("Bad request", 400),
   BAD_REQUEST_TRANSACTION("Bad request. Transaction", 400),
-  BAD_RESPONSE_OPERATOR("Bad response", 400),
-  BAD_RESPONSE_TRANSACTION("Bad response. Transaction", 400),
+  BAD_RESPONSE_OPERATOR("Bad response. Operator", 500),
+  BAD_RESPONSE_TRANSACTION("Bad response. Transaction", 500),
   INTERNAL_OPERATOR_ERROR("Ocurrió un error interno. Operador", 500),
   INTERNAL_TRANSACTION_ERROR("Ocurrió un error interno. Transaction", 500),
   INTERNAL_API_ERROR("Ocurrió un error interno", 500),

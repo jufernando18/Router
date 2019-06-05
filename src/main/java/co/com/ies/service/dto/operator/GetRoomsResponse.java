@@ -1,4 +1,4 @@
-package co.com.ies.service.dto;
+package co.com.ies.service.dto.operator;
 
 import co.com.ies.service.dto.sub.Room;
 

@@ -1,15 +1,15 @@
-package co.com.ies.service.dto;
+package co.com.ies.service.dto.operatormodule;
 
 import co.com.ies.service.dto.sub.AccountDto;
 
 import javax.validation.constraints.NotNull;
 
-public class GetRoomsRequest {
+public class GetRoomsModuleRequest {
 
   @NotNull
   private AccountDto account;
 
-  public GetRoomsRequest() {
+  public GetRoomsModuleRequest() {
     super();
   }
 

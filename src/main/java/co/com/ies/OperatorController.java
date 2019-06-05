@@ -1,21 +1,15 @@
 package co.com.ies;
 
 import co.com.ies.service.LaunchGameService;
-import co.com.ies.service.OperatorModuleService;
-import co.com.ies.service.dto.GetAllRafflesRequest;
-import co.com.ies.service.dto.GetAllRafflesResponse;
-import co.com.ies.service.dto.GetRafflesRequest;
-import co.com.ies.service.dto.GetRafflesResponse;
-import co.com.ies.service.dto.GetRoomsRequest;
-import co.com.ies.service.dto.GetRoomsResponse;
-import co.com.ies.service.dto.LaunchGameInDto;
-import co.com.ies.service.dto.LaunchGameOutDto;
-import co.com.ies.service.dto.RequestDto;
-import co.com.ies.service.dto.ResponseDto;
-import co.com.ies.service.dto.sub.Room;
-
-import java.util.ArrayList;
-import java.util.List;
+import co.com.ies.service.OperatorService;
+import co.com.ies.service.dto.operator.GetAllRafflesRequest;
+import co.com.ies.service.dto.operator.GetAllRafflesResponse;
+import co.com.ies.service.dto.operator.GetRafflesRequest;
+import co.com.ies.service.dto.operator.GetRafflesResponse;
+import co.com.ies.service.dto.operator.GetRoomsRequest;
+import co.com.ies.service.dto.operator.GetRoomsResponse;
+import co.com.ies.service.dto.operator.LaunchGameInDto;
+import co.com.ies.service.dto.operator.LaunchGameOutDto;
 
 import javax.validation.Valid;
 
@@ -32,6 +26,9 @@ public class OperatorController {
 
   @Autowired
   LaunchGameService launchGameService;
+  
+  @Autowired
+  OperatorService operatorService;
 
   /**
    * Para obtener url y token de acceso aun juego.
@@ -55,7 +52,7 @@ public class OperatorController {
   @ResponseBody
   public GetRoomsResponse getBingoRooms(@Valid @RequestBody GetRoomsRequest request) {
 
-    return new GetRoomsResponse();
+    return operatorService.getRooms(request);
   }
 
   /**
@@ -67,7 +64,7 @@ public class OperatorController {
   @PostMapping("/bingo/getraffles")
   @ResponseBody
   public GetRafflesResponse getBingoRaffles(@Valid @RequestBody GetRafflesRequest request) {
-    return new GetRafflesResponse();
+    return operatorService.getRaffles(request);
   }
 
   /**
@@ -80,6 +77,6 @@ public class OperatorController {
   @ResponseBody
   public GetAllRafflesResponse getAllBingoRaffles(
       @Valid @RequestBody GetAllRafflesRequest request) {
-    return new GetAllRafflesResponse();
+    return operatorService.getAllRaffles(request);
   }
 }

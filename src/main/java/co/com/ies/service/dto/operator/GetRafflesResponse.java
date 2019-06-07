@@ -1,6 +1,7 @@
 package co.com.ies.service.dto.operator;
 
 import co.com.ies.service.dto.sub.Raffle;
+import co.com.ies.service.dto.sub.StatusDto;
 
 import java.util.List;
 
@@ -10,6 +11,8 @@ public class GetRafflesResponse {
   
   @NotNull
   private List<Raffle> raffles;
+  @NotNull
+  private StatusDto status;
 
   public GetRafflesResponse() {
     super();
@@ -19,12 +22,23 @@ public class GetRafflesResponse {
     return raffles;
   }
 
-  public void setRaffles(List<Raffle> raffles) {
+  public GetRafflesResponse setRaffles(List<Raffle> raffles) {
     this.raffles = raffles;
+    return this;
+  }
+
+  public StatusDto getStatus() {
+    return status;
+  }
+
+  public GetRafflesResponse setStatus(StatusDto status) {
+    this.status = status;
+    return this;
   }
 
   @Override
   public String toString() {
-    return "GetRafflesResponse [raffles=" + raffles + "]";
+    return "GetRafflesResponse [raffles=" + raffles + ", status=" + status + "]";
   }
+
 }

@@ -1,5 +1,6 @@
 package co.com.ies;
 
+import co.com.ies.domain.enumeration.Message;
 import co.com.ies.service.LaunchGameService;
 import co.com.ies.service.OperatorService;
 import co.com.ies.service.dto.operator.GetAllRafflesRequest;
@@ -10,10 +11,13 @@ import co.com.ies.service.dto.operator.GetRoomsRequest;
 import co.com.ies.service.dto.operator.GetRoomsResponse;
 import co.com.ies.service.dto.operator.LaunchGameInDto;
 import co.com.ies.service.dto.operator.LaunchGameOutDto;
+import co.com.ies.service.dto.sub.StatusDto;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +30,7 @@ public class OperatorController {
 
   @Autowired
   LaunchGameService launchGameService;
-  
+
   @Autowired
   OperatorService operatorService;
 
@@ -38,7 +42,13 @@ public class OperatorController {
    */
   @PostMapping("/launchgame")
   @ResponseBody
-  public LaunchGameOutDto launchgame(@Valid @RequestBody LaunchGameInDto request) {
+  public LaunchGameOutDto launchgame(@Valid @RequestBody LaunchGameInDto request, Errors errors) {
+    if (errors.hasErrors()) {
+      FieldError fieldError = errors.getFieldError();
+      return new LaunchGameOutDto().setStatus(
+          new StatusDto().setErrorCode(Message.BAD_REQUEST_OPERATOR.getCode()).setErrorMsg(
+              fieldError.getField().concat(" ").concat(fieldError.getDefaultMessage())));
+    }
     return launchGameService.getGame(request);
   }
 
@@ -50,8 +60,14 @@ public class OperatorController {
    */
   @PostMapping("/bingo/getrooms")
   @ResponseBody
-  public GetRoomsResponse getBingoRooms(@Valid @RequestBody GetRoomsRequest request) {
-
+  public GetRoomsResponse getBingoRooms(@Valid @RequestBody GetRoomsRequest request,
+      Errors errors) {
+    if (errors.hasErrors()) {
+      FieldError fieldError = errors.getFieldError();
+      return new GetRoomsResponse().setStatus(
+          new StatusDto().setErrorCode(Message.BAD_REQUEST_OPERATOR.getCode()).setErrorMsg(
+              fieldError.getField().concat(" ").concat(fieldError.getDefaultMessage())));
+    }
     return operatorService.getRooms(request);
   }
 
@@ -63,7 +79,14 @@ public class OperatorController {
    */
   @PostMapping("/bingo/getraffles")
   @ResponseBody
-  public GetRafflesResponse getBingoRaffles(@Valid @RequestBody GetRafflesRequest request) {
+  public GetRafflesResponse getBingoRaffles(@Valid @RequestBody GetRafflesRequest request,
+      Errors errors) {
+    if (errors.hasErrors()) {
+      FieldError fieldError = errors.getFieldError();
+      return new GetRafflesResponse().setStatus(
+          new StatusDto().setErrorCode(Message.BAD_REQUEST_OPERATOR.getCode()).setErrorMsg(
+              fieldError.getField().concat(" ").concat(fieldError.getDefaultMessage())));
+    }
     return operatorService.getRaffles(request);
   }
 
@@ -75,8 +98,14 @@ public class OperatorController {
    */
   @PostMapping("/bingo/getallraffles")
   @ResponseBody
-  public GetAllRafflesResponse getAllBingoRaffles(
-      @Valid @RequestBody GetAllRafflesRequest request) {
+  public GetAllRafflesResponse getAllBingoRaffles(@Valid @RequestBody GetAllRafflesRequest request,
+      Errors errors) {
+    if (errors.hasErrors()) {
+      FieldError fieldError = errors.getFieldError();
+      return new GetAllRafflesResponse().setStatus(
+          new StatusDto().setErrorCode(Message.BAD_REQUEST_OPERATOR.getCode()).setErrorMsg(
+              fieldError.getField().concat(" ").concat(fieldError.getDefaultMessage())));
+    }
     return operatorService.getAllRaffles(request);
   }
 }

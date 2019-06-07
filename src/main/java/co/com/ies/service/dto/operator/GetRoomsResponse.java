@@ -1,6 +1,6 @@
 package co.com.ies.service.dto.operator;
 
-import co.com.ies.service.dto.sub.Room;
+import co.com.ies.service.dto.sub.RoomAndRaffleResume;
 
 import java.util.List;
 
@@ -9,17 +9,17 @@ import javax.validation.constraints.NotNull;
 public class GetRoomsResponse {
   
   @NotNull
-  private List<Room> rooms;
+  private List<RoomAndRaffleResume> rooms;
 
   public GetRoomsResponse() {
     super();
   }
 
-  public List<Room> getRooms() {
+  public List<RoomAndRaffleResume> getRooms() {
     return rooms;
   }
 
-  public GetRoomsResponse setRooms(List<Room> rooms) {
+  public GetRoomsResponse setRooms(List<RoomAndRaffleResume> rooms) {
     this.rooms = rooms;
     return this;
   }

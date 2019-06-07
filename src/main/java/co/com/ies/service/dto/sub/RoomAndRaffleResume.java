@@ -6,7 +6,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
-public class RoomAndRaffle {
+public class RoomAndRaffleResume {
 
   @NotNull
   @PositiveOrZero
@@ -16,9 +16,9 @@ public class RoomAndRaffle {
   @NotBlank
   private String description;
   @NotNull
-  private List<Raffle> raffles;
-  
-  public RoomAndRaffle() {
+  private List<RaffleResume> rafflesResume;
+
+  public RoomAndRaffleResume() {
     super();
   }
 
@@ -26,7 +26,7 @@ public class RoomAndRaffle {
     return id;
   }
 
-  public RoomAndRaffle setId(Long id) {
+  public RoomAndRaffleResume setId(Long id) {
     this.id = id;
     return this;
   }
@@ -35,7 +35,7 @@ public class RoomAndRaffle {
     return name;
   }
 
-  public RoomAndRaffle setName(String name) {
+  public RoomAndRaffleResume setName(String name) {
     this.name = name;
     return this;
   }
@@ -44,25 +44,24 @@ public class RoomAndRaffle {
     return description;
   }
 
-  public RoomAndRaffle setDescription(String description) {
+  public RoomAndRaffleResume setDescription(String description) {
     this.description = description;
     return this;
   }
 
-  public List<Raffle> getRaffles() {
-    return raffles;
+  public List<RaffleResume> getRafflesResume() {
+    return rafflesResume;
   }
 
-  public RoomAndRaffle setRaffles(List<Raffle> raffles) {
-    this.raffles = raffles;
+  public RoomAndRaffleResume setRafflesResume(List<RaffleResume> rafflesResume) {
+    this.rafflesResume = rafflesResume;
     return this;
   }
 
   @Override
   public String toString() {
-    return "RoomAndRaffle [name=" + name + ", description=" + description + ", raffles=" + raffles
-        + "]";
+    return "RoomAndRaffleResume [id=" + id + ", name=" + name + ", description=" + description
+        + ", rafflesResume=" + rafflesResume + "]";
   }
 
-  
 }

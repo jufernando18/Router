@@ -7,13 +7,17 @@ import java.util.List;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.PositiveOrZero;
 
 public class Raffle {
 
+  @NotNull
+  @PositiveOrZero
+  private Long id;
+  @NotBlank
+  private String name;
   @NotBlank
   private String state;
-  @NotNull
-  private Integer id;
   @PastOrPresent
   private Date launchingDate;
   @NotNull
@@ -31,55 +35,70 @@ public class Raffle {
     return state;
   }
 
-  public void setState(String state) {
+  public Raffle setState(String state) {
     this.state = state;
+    return this;
   }
 
-  public Integer getId() {
+  public String getName() {
+    return name;
+  }
+
+  public Raffle setName(String name) {
+    this.name = name;
+    return this;
+  }
+
+  public Long getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public Raffle setId(Long id) {
     this.id = id;
+    return this;
   }
 
   public Date getLaunchingDate() {
     return launchingDate;
   }
 
-  public void setLaunchingDate(Date launchingDate) {
+  public Raffle setLaunchingDate(Date launchingDate) {
     this.launchingDate = launchingDate;
+    return this;
   }
 
   public BigDecimal getTablePrize() {
     return tablePrize;
   }
 
-  public void setTablePrize(BigDecimal tablePrize) {
+  public Raffle setTablePrize(BigDecimal tablePrize) {
     this.tablePrize = tablePrize;
+    return this;
   }
 
   public String getRaffleType() {
     return raffleType;
   }
 
-  public void setRaffleType(String raffleType) {
+  public Raffle setRaffleType(String raffleType) {
     this.raffleType = raffleType;
+    return this;
   }
 
   public List<FigureAndAward> getAwards() {
     return awards;
   }
 
-  public void setAwards(List<FigureAndAward> awards) {
+  public Raffle setAwards(List<FigureAndAward> awards) {
     this.awards = awards;
+    return this;
   }
 
   @Override
   public String toString() {
-    return "Raffle [state=" + state + ", id=" + id + ", launchingDate=" + launchingDate
-        + ", tablePrize=" + tablePrize + ", raffleType=" + raffleType + ", awards=" + awards + "]";
+    return "Raffle [state=" + state + ", name=" + name + ", id=" + id + ", launchingDate="
+        + launchingDate + ", tablePrize=" + tablePrize + ", raffleType=" + raffleType + ", awards="
+        + awards + "]";
   }
-  
   
 }

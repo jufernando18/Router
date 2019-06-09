@@ -6,8 +6,8 @@ import co.com.ies.domain.enumeration.TransType;
 import co.com.ies.domain.service.GeneralMethod;
 import co.com.ies.domain.service.ILaunchGameDomainService;
 import co.com.ies.service.dto.OperatorModuleDto;
-import co.com.ies.service.dto.operator.LaunchGameInDto;
-import co.com.ies.service.dto.operator.LaunchGameOutDto;
+import co.com.ies.service.dto.operator.LaunchGameRequest;
+import co.com.ies.service.dto.operator.LaunchGameResponse;
 import co.com.ies.service.dto.sub.AccountDto;
 import co.com.ies.service.dto.sub.StatusDto;
 import co.com.ies.service.error.BadRequestException;
@@ -27,7 +27,7 @@ public abstract class LaunchGameDomainService extends GeneralMethod
    * @return true Ok, false no Ok
    * @throws BadRequestException Excepción que se lanza para datos erróneos
    */
-  public boolean isOkOperatorInData(LaunchGameInDto operatorInDto)
+  public boolean isOkOperatorInData(LaunchGameRequest operatorInDto)
       throws BadRequestException {
     getLogger().debug("isOkOperatorInData|");
     getLogger().debug("{}", operatorInDto);
@@ -76,7 +76,7 @@ public abstract class LaunchGameDomainService extends GeneralMethod
    * @return
    */
   public OperatorModuleDto operatorInToOperatorModuleOut(
-      LaunchGameInDto operatorInDto) {
+      LaunchGameRequest operatorInDto) {
     getLogger().debug("operatorInToOperatorModuleOut|");
     Map<String, Object> body = new HashMap<>();
     body.put(Key.GAME_CODE.getKey(), operatorInDto.getGameCode());
@@ -103,10 +103,10 @@ public abstract class LaunchGameDomainService extends GeneralMethod
    * @param operatorModuleInDto información que entrega operatorModule
    * @return
    */
-  public LaunchGameOutDto operatorModuleInToOperatorOut(
+  public LaunchGameResponse operatorModuleInToOperatorOut(
       OperatorModuleDto operatorModuleInDto) {
     getLogger().debug("operatorModuleInToOperatorOut|");
-    LaunchGameOutDto operatorOutDto = new LaunchGameOutDto()
+    LaunchGameResponse operatorOutDto = new LaunchGameResponse()
         .setUrl(
             operatorModuleInDto.getUrl()
                 .concat("?token=")

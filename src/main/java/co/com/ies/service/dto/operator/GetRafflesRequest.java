@@ -30,8 +30,9 @@ public class GetRafflesRequest {
     return roomId;
   }
 
-  public void setRoom(Long roomId) {
+  public GetRafflesRequest setRoom(Long roomId) {
     this.roomId = roomId;
+    return this;
   }
 
   @Override

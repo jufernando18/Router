@@ -4,8 +4,8 @@ import co.com.ies.domain.service.impl.RequestProcessorDomain;
 import co.com.ies.service.RequestBingoProcessorService;
 import co.com.ies.service.dto.RequestDto;
 import co.com.ies.service.dto.ResponseDto;
-import co.com.ies.service.dto.operator.LaunchGameInDto;
-import co.com.ies.service.dto.operator.LaunchGameOutDto;
+import co.com.ies.service.dto.operator.LaunchGameRequest;
+import co.com.ies.service.dto.operator.LaunchGameResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,7 +46,7 @@ public class RequestBingoProcessorServiceImpl extends RequestProcessorDomain
   }
 
   @Override
-  public LaunchGameOutDto launchGame(LaunchGameInDto request) {
+  public LaunchGameResponse launchGame(LaunchGameRequest request) {
     // TODO Auto-generated method stub
     return null;
   }

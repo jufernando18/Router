@@ -17,8 +17,9 @@ public class GetRoomsModuleRequest {
     return account;
   }
 
-  public void setAccount(AccountDto account) {
+  public GetRoomsModuleRequest setAccount(AccountDto account) {
     this.account = account;
+    return this;
   }
 
   @Override

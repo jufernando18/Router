@@ -5,8 +5,8 @@ import co.com.ies.domain.enumeration.Url;
 import co.com.ies.domain.service.impl.LaunchGameDomainService;
 import co.com.ies.service.LaunchGameService;
 import co.com.ies.service.dto.OperatorModuleDto;
-import co.com.ies.service.dto.operator.LaunchGameInDto;
-import co.com.ies.service.dto.operator.LaunchGameOutDto;
+import co.com.ies.service.dto.operator.LaunchGameRequest;
+import co.com.ies.service.dto.operator.LaunchGameResponse;
 import co.com.ies.service.dto.sub.StatusDto;
 import co.com.ies.service.error.BadRequestException;
 import co.com.ies.service.error.OperatorModuleDataException;
@@ -39,14 +39,14 @@ public class LaunchGameServiceImpl extends LaunchGameDomainService implements La
   /**
    * Se consume a OperatorModule que es quien provee el acceso.
    */
-  public LaunchGameOutDto getGame(LaunchGameInDto operatorInDto) {
+  public LaunchGameResponse getGame(LaunchGameRequest operatorInDto) {
     log.debug("****Ejecución del servicio****");
 
     try {
       isOkOperatorInData(operatorInDto);
     } catch (BadRequestException e) {
       log.error(e.getMessage());
-      return new LaunchGameOutDto(null,
+      return new LaunchGameResponse(null,
           new StatusDto(Message.BAD_REQUEST_OPERATOR.getCode(), e.getMessage()));
     }
 
@@ -59,7 +59,7 @@ public class LaunchGameServiceImpl extends LaunchGameDomainService implements La
     } catch (OperatorModuleException e) {
       log.warn("SE CAPTURO EXCEPCION EN TRANSACTION EXCEPTION");
       log.error(e.getMessage());
-      return new LaunchGameOutDto(null,
+      return new LaunchGameResponse(null,
           new StatusDto(Message.INTERNAL_TRANSACTION_ERROR.getCode(), e.getMessage()));
     }
 
@@ -67,7 +67,7 @@ public class LaunchGameServiceImpl extends LaunchGameDomainService implements La
       isOkOperatorModuleInData(operatorModuleInDto);
     } catch (OperatorModuleDataException e) {
       log.error(e.getMessage());
-      return new LaunchGameOutDto(null,
+      return new LaunchGameResponse(null,
           new StatusDto(Message.BAD_RESPONSE_TRANSACTION.getCode(), e.getMessage()));
     }
 

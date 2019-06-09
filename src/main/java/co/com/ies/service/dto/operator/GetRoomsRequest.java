@@ -17,8 +17,9 @@ public class GetRoomsRequest {
     return account;
   }
 
-  public void setAccount(AccountDto account) {
+  public GetRoomsRequest setAccount(AccountDto account) {
     this.account = account;
+    return this;
   }
 
   @Override

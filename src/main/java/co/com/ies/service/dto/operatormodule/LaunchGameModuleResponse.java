@@ -1,39 +1,38 @@
-package co.com.ies.service.dto.operator;
+package co.com.ies.service.dto.operatormodule;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import co.com.ies.service.dto.sub.StatusDto;
 
-public class LaunchGameOutDto {
-  
+public class LaunchGameModuleResponse {
+
   @NotBlank
   private String url;
+  @NotBlank
+  private String token;
   @NotNull
   private StatusDto status;
 
-  public LaunchGameOutDto() {
+  public LaunchGameModuleResponse() {
     super();
-  }
-
-  /**
-   * Modelo de información que se entrega como respuesta al operador.
-   * 
-   * @param url    url más token de acceso al juego
-   * @param status estado con el que finalizó la operación
-   */
-  public LaunchGameOutDto(String url, StatusDto status) {
-    super();
-    this.url = url;
-    this.status = status;
   }
 
   public String getUrl() {
     return url;
   }
 
-  public LaunchGameOutDto setUrl(String url) {
+  public LaunchGameModuleResponse setUrl(String url) {
     this.url = url;
+    return this;
+  }
+
+  public String getToken() {
+    return token;
+  }
+
+  public LaunchGameModuleResponse setToken(String token) {
+    this.token = token;
     return this;
   }
 
@@ -41,7 +40,7 @@ public class LaunchGameOutDto {
     return status;
   }
 
-  public LaunchGameOutDto setStatus(StatusDto status) {
+  public LaunchGameModuleResponse setStatus(StatusDto status) {
     this.status = status;
     return this;
   }
@@ -51,6 +50,7 @@ public class LaunchGameOutDto {
     final int prime = 31;
     int result = 1;
     result = prime * result + ((status == null) ? 0 : status.hashCode());
+    result = prime * result + ((token == null) ? 0 : token.hashCode());
     result = prime * result + ((url == null) ? 0 : url.hashCode());
     return result;
   }
@@ -67,12 +67,19 @@ public class LaunchGameOutDto {
     if (getClass() != obj.getClass()) {
       return false;
     }
-    LaunchGameOutDto other = (LaunchGameOutDto) obj;
+    LaunchGameModuleResponse other = (LaunchGameModuleResponse) obj;
     if (status == null) {
       if (other.status != null) {
         return false;
       }
     } else if (!status.equals(other.status)) {
+      return false;
+    }
+    if (token == null) {
+      if (other.token != null) {
+        return false;
+      }
+    } else if (!token.equals(other.token)) {
       return false;
     }
     if (url == null) {
@@ -86,13 +93,13 @@ public class LaunchGameOutDto {
   }
 
   public boolean isEmpty() {
-    LaunchGameOutDto o = new LaunchGameOutDto();
+    LaunchGameModuleResponse o = new LaunchGameModuleResponse();
     return o.equals(this);
   }
 
   @Override
   public String toString() {
-    return "LaunchGameOperatorOutDTO [url=" + url + ", status=" + status + "]";
+    return "LaunchGameModuleResponse [url=" + url + ", token=" + token + ", status=" + status + "]";
   }
 
 }

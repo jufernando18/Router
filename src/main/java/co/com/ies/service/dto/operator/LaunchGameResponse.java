@@ -1,18 +1,18 @@
-package co.com.ies.service.dto.operatormodule;
+package co.com.ies.service.dto.operator;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import co.com.ies.service.dto.sub.StatusDto;
 
-public class LaunchGameModuleOut {
+public class LaunchGameResponse {
   
   @NotBlank
   private String url;
   @NotNull
   private StatusDto status;
 
-  public LaunchGameModuleOut() {
+  public LaunchGameResponse() {
     super();
   }
 
@@ -22,7 +22,7 @@ public class LaunchGameModuleOut {
    * @param url    url más token de acceso al juego
    * @param status estado con el que finalizó la operación
    */
-  public LaunchGameModuleOut(String url, StatusDto status) {
+  public LaunchGameResponse(String url, StatusDto status) {
     super();
     this.url = url;
     this.status = status;
@@ -32,7 +32,7 @@ public class LaunchGameModuleOut {
     return url;
   }
 
-  public LaunchGameModuleOut setUrl(String url) {
+  public LaunchGameResponse setUrl(String url) {
     this.url = url;
     return this;
   }
@@ -41,7 +41,7 @@ public class LaunchGameModuleOut {
     return status;
   }
 
-  public LaunchGameModuleOut setStatus(StatusDto status) {
+  public LaunchGameResponse setStatus(StatusDto status) {
     this.status = status;
     return this;
   }
@@ -67,7 +67,7 @@ public class LaunchGameModuleOut {
     if (getClass() != obj.getClass()) {
       return false;
     }
-    LaunchGameModuleOut other = (LaunchGameModuleOut) obj;
+    LaunchGameResponse other = (LaunchGameResponse) obj;
     if (status == null) {
       if (other.status != null) {
         return false;
@@ -86,7 +86,7 @@ public class LaunchGameModuleOut {
   }
 
   public boolean isEmpty() {
-    LaunchGameModuleOut o = new LaunchGameModuleOut();
+    LaunchGameResponse o = new LaunchGameResponse();
     return o.equals(this);
   }
 

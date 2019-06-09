@@ -8,6 +8,7 @@ public enum Url {
   //CACHE("http://localhost:9999/cache/api"),
   CACHE("http://localhost:9888/simuladortransaction/transaction"),
   OPERATOR_MODULE_ENDPOINT("http://localhost:9888/simulatoroperatormodule"),
+  LAUNCH_GAME("/launchgame"),
   GET_ROOMS("/getrooms"),
   GET_RAFFLES("/getraffles"),
   GET_ALL_RAFFLES("/getallraffles");

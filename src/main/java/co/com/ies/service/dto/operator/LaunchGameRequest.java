@@ -1,4 +1,4 @@
-package co.com.ies.service.dto.operatormodule;
+package co.com.ies.service.dto.operator;
 
 import co.com.ies.service.dto.sub.AccountDto;
 
@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
  *
  */
 
-public class LaunchGameModuleIn {
+public class LaunchGameRequest {
 
   @NotBlank
   private String gameCode; // código del juego que solicita
@@ -43,7 +43,7 @@ public class LaunchGameModuleIn {
   @NotNull
   private AccountDto account; // {userName,password} credenciales de acceso
 
-  public LaunchGameModuleIn() {
+  public LaunchGameRequest() {
     super();
   }
 
@@ -51,7 +51,7 @@ public class LaunchGameModuleIn {
     return gameCode;
   }
 
-  public LaunchGameModuleIn setGameCode(String gameCode) {
+  public LaunchGameRequest setGameCode(String gameCode) {
     this.gameCode = gameCode;
     return this;
   }
@@ -60,7 +60,7 @@ public class LaunchGameModuleIn {
     return platform;
   }
 
-  public LaunchGameModuleIn setPlatform(Integer platform) {
+  public LaunchGameRequest setPlatform(Integer platform) {
     this.platform = platform;
     return this;
   }
@@ -69,7 +69,7 @@ public class LaunchGameModuleIn {
     return currencyCode;
   }
 
-  public LaunchGameModuleIn setCurrencyCode(String currencyCode) {
+  public LaunchGameRequest setCurrencyCode(String currencyCode) {
     this.currencyCode = currencyCode;
     return this;
   }
@@ -78,7 +78,7 @@ public class LaunchGameModuleIn {
     return languageCode;
   }
 
-  public LaunchGameModuleIn setLanguageCode(String languageCode) {
+  public LaunchGameRequest setLanguageCode(String languageCode) {
     this.languageCode = languageCode;
     return this;
   }
@@ -87,7 +87,7 @@ public class LaunchGameModuleIn {
     return playerIp;
   }
 
-  public LaunchGameModuleIn setPlayerIp(String playerIp) {
+  public LaunchGameRequest setPlayerIp(String playerIp) {
     this.playerIp = playerIp;
     return this;
   }
@@ -96,7 +96,7 @@ public class LaunchGameModuleIn {
     return playerId;
   }
 
-  public LaunchGameModuleIn setPlayerId(String playerId) {
+  public LaunchGameRequest setPlayerId(String playerId) {
     this.playerId = playerId;
     return this;
   }
@@ -105,7 +105,7 @@ public class LaunchGameModuleIn {
     return countryCode;
   }
 
-  public LaunchGameModuleIn setCountryCode(String countryCode) {
+  public LaunchGameRequest setCountryCode(String countryCode) {
     this.countryCode = countryCode;
     return this;
   }
@@ -114,7 +114,7 @@ public class LaunchGameModuleIn {
     return totalBalance;
   }
 
-  public LaunchGameModuleIn setTotalBalance(BigDecimal totalBalance) {
+  public LaunchGameRequest setTotalBalance(BigDecimal totalBalance) {
     this.totalBalance = totalBalance;
     return this;
   }
@@ -123,7 +123,7 @@ public class LaunchGameModuleIn {
     return account;
   }
 
-  public LaunchGameModuleIn setAccount(AccountDto account) {
+  public LaunchGameRequest setAccount(AccountDto account) {
     this.account = account;
     return this;
   }
@@ -156,7 +156,7 @@ public class LaunchGameModuleIn {
     if (getClass() != obj.getClass()) {
       return false;
     }
-    LaunchGameModuleIn other = (LaunchGameModuleIn) obj;
+    LaunchGameRequest other = (LaunchGameRequest) obj;
     if (account == null) {
       if (other.account != null) {
         return false;
@@ -229,7 +229,7 @@ public class LaunchGameModuleIn {
    * @return .
    */
   public boolean isEmpty() {
-    LaunchGameModuleIn o = new LaunchGameModuleIn();
+    LaunchGameRequest o = new LaunchGameRequest();
     return o.equals(this);
   }
 

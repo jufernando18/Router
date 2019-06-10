@@ -16,6 +16,7 @@ import co.com.ies.service.dto.sub.StatusDto;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,6 +45,7 @@ public class OperatorController {
   @ResponseBody
   public LaunchGameResponse launchgame(@Valid @RequestBody LaunchGameRequest request,
       Errors errors) {
+    System.out.println("Se capturó el error");
     if (errors.hasErrors()) {
       FieldError fieldError = errors.getFieldError();
       String errorMsg = fieldError.getField().concat(" ").concat(fieldError.getDefaultMessage());
@@ -51,7 +53,7 @@ public class OperatorController {
           .setErrorCode(Message.BAD_REQUEST_OPERATOR.getCode()).setErrorMsg(errorMsg));
     }
     return operatorService.getGame(request);
-    //return launchGameService.getGame(request);
+    // return launchGameService.getGame(request);
   }
 
   /**
@@ -83,10 +85,12 @@ public class OperatorController {
   @ResponseBody
   public GetRafflesResponse getBingoRaffles(@Valid @RequestBody GetRafflesRequest request,
       Errors errors) {
-    /* if (errors.hasErrors()) { FieldError fieldError = errors.getFieldError(); String errorMsg =
-     * fieldError.getField().concat(" ").concat(fieldError.getDefaultMessage()); return new
-     * GetRafflesResponse().setStatus(new StatusDto()
-     * .setErrorCode(Message.BAD_REQUEST_OPERATOR.getCode()).setErrorMsg(errorMsg)); } */
+    if (errors.hasErrors()) {
+      FieldError fieldError = errors.getFieldError();
+      String errorMsg = fieldError.getField().concat(" ").concat(fieldError.getDefaultMessage());
+      return new GetRafflesResponse().setStatus(new StatusDto()
+          .setErrorCode(Message.BAD_REQUEST_OPERATOR.getCode()).setErrorMsg(errorMsg));
+    }
     return operatorService.getRaffles(request);
   }
 

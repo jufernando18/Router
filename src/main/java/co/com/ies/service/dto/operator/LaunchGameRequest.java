@@ -228,7 +228,7 @@ public class LaunchGameRequest {
    * 
    * @return .
    */
-  public boolean isEmpty() {
+  public boolean assertEmpty() {
     LaunchGameRequest o = new LaunchGameRequest();
     return o.equals(this);
   }

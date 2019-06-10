@@ -22,7 +22,18 @@ import co.com.ies.service.dto.sub.StatusDto;
 import co.com.ies.service.error.BadRequestException;
 import co.com.ies.service.error.BadResponseException;
 
+import java.util.Optional;
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+
 public abstract class OperatorDomainService implements IOperatorDomainService {
+
+  private static final Validator validator = getValidator();
+
   /**
    * .
    * 
@@ -110,7 +121,7 @@ public abstract class OperatorDomainService implements IOperatorDomainService {
       throws BadRequestException {
     validateRequestDto(request);
     validateRequestDto(request.getAccount());
-    return new GetRafflesModuleRequest().setRoom(request.getRoom())
+    return new GetRafflesModuleRequest().setRoomId(request.getRoomId())
         .setAccount(request.getAccount());
   }
 
@@ -143,7 +154,49 @@ public abstract class OperatorDomainService implements IOperatorDomainService {
     return new GetAllRafflesModuleRequest().setAccount(request.getAccount());
   }
 
-  public abstract <T> void validateRequestDto(T request) throws BadRequestException;
+  /**
+   * .
+   * 
+   * @return .
+   */
+  public static Validator getValidator() {
+    ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+    return factory.getValidator();
+  }
 
-  public abstract <T> void validateResponseDto(T response) throws BadResponseException;
+  /**
+   * .
+   * 
+   * @param <T>     .
+   * @param request .
+   * @throws BadRequestException .
+   */
+  public <T> void validateRequestDto(T request) throws BadRequestException {
+    Set<ConstraintViolation<T>> violations = validator.validate(request);
+    Optional<ConstraintViolation<T>> firstViolation = violations.stream().findFirst();
+    if (firstViolation.isPresent()) {
+      ConstraintViolation<T> firstError = firstViolation.get();
+      String violation = firstError.getPropertyPath().toString().concat(" ")
+          .concat(firstError.getMessage());
+      throw new BadRequestException(violation);
+    }
+  }
+
+  /**
+   * .
+   * 
+   * @param <T>      .
+   * @param response .
+   * @throws BadResponseException .
+   */
+  public <T> void validateResponseDto(T response) throws BadResponseException {
+    Set<ConstraintViolation<T>> violations = validator.validate(response);
+    Optional<ConstraintViolation<T>> firstViolation = violations.stream().findFirst();
+    if (firstViolation.isPresent()) {
+      ConstraintViolation<T> firstError = firstViolation.get();
+      String violation = firstError.getPropertyPath().toString().concat(" ")
+          .concat(firstError.getMessage());
+      throw new BadResponseException(violation);
+    }
+  }
 }

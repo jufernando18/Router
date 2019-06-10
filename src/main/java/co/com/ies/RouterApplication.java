@@ -21,9 +21,9 @@ public class RouterApplication {
     return new RestTemplate();
   }
   
-  @Bean
+  /*@Bean
   public Validator getValidator() {
     ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
     return factory.getValidator();
-  }
+  }*/
 }

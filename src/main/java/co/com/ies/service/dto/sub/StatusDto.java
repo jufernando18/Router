@@ -45,49 +45,6 @@ public class StatusDto {
   }
 
   @Override
-  public int hashCode() {
-    final int prime = 31;
-    int result = 1;
-    result = prime * result + ((errorCode == null) ? 0 : errorCode.hashCode());
-    result = prime * result + ((errorMsg == null) ? 0 : errorMsg.hashCode());
-    return result;
-  }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
-    }
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    StatusDto other = (StatusDto) obj;
-    if (errorCode == null) {
-      if (other.errorCode != null) {
-        return false;
-      }
-    } else if (!errorCode.equals(other.errorCode)) {
-      return false;
-    }
-    if (errorMsg == null) {
-      if (other.errorMsg != null) {
-        return false;
-      }
-    } else if (!errorMsg.equals(other.errorMsg)) {
-      return false;
-    }
-    return true;
-  }
-
-  public boolean isEmpty() {
-    StatusDto o = new StatusDto();
-    return o.equals(this);
-  }
-
-  @Override
   public String toString() {
     return "StatusDto [errorCode=" + errorCode + ", errorMsg=" + errorMsg + "]";
   }

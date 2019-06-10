@@ -32,7 +32,7 @@ public abstract class LaunchGameDomainService extends GeneralMethod
     getLogger().debug("isOkOperatorInData|");
     getLogger().debug("{}", operatorInDto);
     ifNullLaunchRequestException(operatorInDto, Message.OPERATOR_REQUEST_NULL_ERROR);
-    if (operatorInDto.isEmpty()) {
+    if (operatorInDto.assertEmpty()) {
       ifNullLaunchRequestException(null, Message.OPERATOR_REQUEST_EMPTY_ERROR);
     }
     final AccountDto account = operatorInDto.getAccount();

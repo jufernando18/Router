@@ -26,11 +26,11 @@ public class GetRafflesRequest {
     return this;
   }
 
-  public Long getRoom() {
+  public Long getRoomId() {
     return roomId;
   }
 
-  public GetRafflesRequest setRoom(Long roomId) {
+  public GetRafflesRequest setRoomId(Long roomId) {
     this.roomId = roomId;
     return this;
   }

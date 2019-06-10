@@ -85,7 +85,7 @@ public class LaunchGameResponse {
     return true;
   }
 
-  public boolean isEmpty() {
+  public boolean assertEmpty() {
     LaunchGameResponse o = new LaunchGameResponse();
     return o.equals(this);
   }

@@ -10,7 +10,7 @@ import co.com.ies.service.dto.operator.GetRoomsResponse;
 import co.com.ies.service.dto.operator.LaunchGameRequest;
 import co.com.ies.service.dto.operator.LaunchGameResponse;
 
-public interface OperatorService extends IOperatorDomainService {
+public interface ExternalOperatorService extends IOperatorDomainService {
   
   LaunchGameResponse getGame(LaunchGameRequest request);
 

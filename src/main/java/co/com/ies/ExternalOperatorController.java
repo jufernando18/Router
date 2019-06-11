@@ -2,7 +2,7 @@ package co.com.ies;
 
 import co.com.ies.domain.enumeration.Message;
 import co.com.ies.service.LaunchGameService;
-import co.com.ies.service.OperatorService;
+import co.com.ies.service.ExternalOperatorService;
 import co.com.ies.service.dto.operator.GetAllRafflesRequest;
 import co.com.ies.service.dto.operator.GetAllRafflesResponse;
 import co.com.ies.service.dto.operator.GetRafflesRequest;
@@ -27,13 +27,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/server")
-public class OperatorController {
+public class ExternalOperatorController {
 
   @Autowired
   LaunchGameService launchGameService;
 
   @Autowired
-  OperatorService operatorService;
+  ExternalOperatorService operatorService;
 
   /**
    * Para obtener url y token de acceso aun juego.

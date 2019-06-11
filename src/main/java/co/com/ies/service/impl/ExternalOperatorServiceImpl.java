@@ -3,7 +3,7 @@ package co.com.ies.service.impl;
 import co.com.ies.domain.enumeration.Message;
 import co.com.ies.domain.enumeration.Url;
 import co.com.ies.domain.service.impl.OperatorDomainService;
-import co.com.ies.service.OperatorService;
+import co.com.ies.service.ExternalOperatorService;
 import co.com.ies.service.dto.operator.GetAllRafflesRequest;
 import co.com.ies.service.dto.operator.GetAllRafflesResponse;
 import co.com.ies.service.dto.operator.GetRafflesRequest;
@@ -23,17 +23,12 @@ import co.com.ies.service.dto.operatormodule.LaunchGameModuleResponse;
 import co.com.ies.service.dto.sub.StatusDto;
 import co.com.ies.service.error.BadRequestException;
 import co.com.ies.service.error.BadResponseException;
-import co.com.ies.service.error.OperatorModuleException;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,20 +40,16 @@ import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 @Service
-public class OperatorServiceImpl extends OperatorDomainService implements OperatorService {
+public class ExternalOperatorServiceImpl extends OperatorDomainService
+    implements ExternalOperatorService {
 
   @Autowired
   RestTemplate restTemplate;
 
-  private final Logger log = LoggerFactory.getLogger(OperatorServiceImpl.class);
+  private final Logger log = LoggerFactory.getLogger(ExternalOperatorServiceImpl.class);
 
-  /*
-   * @Autowired Validator validator;
-   */
+  /* @Autowired Validator validator; */
 
   @Override
   public LaunchGameResponse getGame(LaunchGameRequest request) {
